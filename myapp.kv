@@ -1,0 +1,45 @@
+<MyRoot>:
+        
+    days_left: days_left
+    Image:
+        pos: self.pos
+        size_hint: None, None
+        size: root.size
+        allow_stretch: False
+        keep_ratio: True
+        source: 'island.png'
+
+    BoxLayout:
+        orientation:'vertical'
+        size: root.width, root.height
+        
+        Label:
+            id: question_label
+            text: "How many days left/passed?"
+            font_size: 64
+            size: 10, 50
+            color: 1,1,1,1
+            background_color: 0.5, 0.5, 0.5, 0.5
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+        Label:
+            id: days_left
+            text: ""
+            font_size: 64
+            color: 0.1,0.9,0.1,1
+
+
+        Button:
+            text: "Generate"
+            font_size: 55
+            background_color: 0, 0.1, 0.8, 0.8
+            on_press: root.countdown() 
+            on_press: text: "Generating"
+            on_press: text: " "
+            on_state:
+                print("my current state is {}".format(self.state))
